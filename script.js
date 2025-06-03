@@ -1,88 +1,156 @@
 const products = [{ 
     id: 1, 
-    name: 'Gaming Laptop Pro', 
+    name: 'Ultrabook Z5', 
     category: 'computers', 
-    price: 1299.99, 
-    icon: '💻', 
-    stock: 15 
+    price: 1149.99, 
+    icon: '🧮', 
+    stock: 10 
 },{ 
     id: 2, 
-    name: 'Wireless Headphones', 
+    name: 'Surround Sound Bar', 
     category: 'audio', 
-    price: 199.99, 
-    icon: '🎧', 
-    stock: 32 
+    price: 229.99, 
+    icon: '📢', 
+    stock: 22 
 },{ 
     id: 3, 
-    name: 'Smartphone X', 
+    name: 'Pixel Nova 2', 
     category: 'phones', 
-    price: 899.99, 
-    icon: '📱', 
-    stock: 0 
+    price: 849.99, 
+    icon: '📲', 
+    stock: 14 
 },{ 
     id: 4, 
-    name: 'Gaming Console', 
+    name: 'NextGen Console X', 
     category: 'gaming', 
-    price: 549.99, 
-    icon: '🎮', 
-    stock: 8 
+    price: 599.99, 
+    icon: '🕹️', 
+    stock: 5 
 },{ 
     id: 5, 
-    name: '4K Monitor', 
+    name: 'Curved UHD Monitor', 
     category: 'computers', 
-    price: 449.99, 
-    icon: '🖥️', 
-    stock: 12 
+    price: 479.99, 
+    icon: '🖲️', 
+    stock: 9 
 },{ 
     id: 6, 
-    name: 'Bluetooth Speaker', 
+    name: 'Portable Bass Cube', 
     category: 'audio', 
-    price: 79.99, 
-    icon: '🔊', 
-    stock: 45 
+    price: 69.99, 
+    icon: '📻', 
+    stock: 35 
 },{ 
     id: 7, 
-    name: 'Tablet Pro', 
+    name: 'EdgeTab 11', 
     category: 'computers', 
-    price: 699.99, 
-    icon: '📱', 
-    stock: 20 
+    price: 629.99, 
+    icon: '📝', 
+    stock: 17 
 },{ 
     id: 8, 
-    name: 'Gaming Mouse', 
+    name: 'Precision Gaming Mouse', 
     category: 'gaming', 
-    price: 89.99, 
-    icon: '🖱️', 
-    stock: 50 
+    price: 99.99, 
+    icon: '🖲️', 
+    stock: 40 
 },{ 
     id: 9, 
-    name: 'Smart Watch', 
+    name: 'Fitness Tracker FitX', 
     category: 'phones', 
-    price: 299.99, 
-    icon: '⌚', 
-    stock: 18 
+    price: 259.99, 
+    icon: '⏱️', 
+    stock: 13 
 },{ 
     id: 10, 
-    name: 'Mechanical Keyboard', 
+    name: 'RGB Mechanical Keys', 
     category: 'gaming', 
-    price: 149.99, 
-    icon: '⌨️', 
-    stock: 25 
+    price: 139.99, 
+    icon: '🎮', 
+    stock: 28 
 },{ 
     id: 11, 
-    name: 'Noise Cancelling Earbuds', 
+    name: 'True Wireless Pods', 
     category: 'audio', 
-    price: 249.99, 
-    icon: '🎵', 
-    stock: 30 
+    price: 189.99, 
+    icon: '🎧', 
+    stock: 33 
 },{ 
     id: 12, 
-    name: 'External SSD 1TB', 
+    name: 'NVMe SSD 2TB', 
     category: 'computers',
-    price: 179.99, 
-    icon: '💾', 
-    stock: 40 
-}];
+    price: 219.99, 
+    icon: '🗃️', 
+    stock: 27 
+},
+ // #### add aditional products
+{
+id: 13,
+name: 'AI Assistant Speaker',
+category: 'audio',
+price: 129.99,
+icon: '🗣️',
+stock: 20
+},
+{
+id: 14,
+name: 'Workstation Tower X',
+category: 'computers',
+price: 1599.99,
+icon: '🖧',
+stock: 6
+},
+{
+id: 15,
+name: 'VR Headset VisionX',
+category: 'gaming',
+price: 499.99,
+icon: '🥽',
+stock: 10
+},
+{
+id: 16,
+name: 'Foldable Phone Flexi',
+category: 'phones',
+price: 1199.99,
+icon: '📞',
+stock: 4
+},
+{
+id: 17,
+name: 'Wireless Charging Dock',
+category: 'phones',
+price: 49.99,
+icon: '🔋',
+stock: 37
+},
+{
+id: 18,
+name: 'Gaming Chair Elite',
+category: 'gaming',
+price: 299.99,
+icon: '🪑',
+stock: 15
+},
+{
+id: 19,
+name: 'Compact Office PC',
+category: 'computers',
+price: 699.99,
+icon: '🖨️',
+stock: 8
+},
+{
+id: 20,
+name: 'Studio Microphone Kit',
+category: 'audio',
+price: 179.99,
+icon: '🎙️',
+stock: 18
+}
+
+];
+
 
 // State management
 let cart = [];
@@ -92,13 +160,13 @@ let isRegisterMode = false;
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
-    loadProducts('all');
-    updateCartUI();
-    checkLoginStatus();
+    load_products('all');
+    update_cart_UI();
+    check_login_status();
 });
 
 // Load products
-function loadProducts(category) {
+function load_products(category) {
     const grid = document.getElementById('productsGrid');
     const filteredProducts = category === 'all'
         ? products
@@ -113,10 +181,10 @@ function loadProducts(category) {
                         <p class="product-price">$${product.price.toFixed(2)}</p>
                         <div class="product-actions">
                             ${product.stock > 0
-            ? `<button class="btn-add-cart" onclick="addToCart(${product.id})">Add to Cart</button>`
+            ? `<button class="btn-add-cart" onclick="add_to_cart(${product.id})">Add to Cart</button>`
             : `<button class="btn-add-cart" disabled style="background: #ccc;">Out of Stock</button>`
         }
-                            <button class="btn-view" onclick="viewProduct(${product.id})">View</button>
+                            <button class="btn-view" onclick="view_products(${product.id})">View</button>
                         </div>
                     </div>
                 </div>
@@ -124,18 +192,18 @@ function loadProducts(category) {
 }
 
 // Filter products
-function filterProducts(category) {
+function filter_products(category) {
     // Update active filter button
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     event.target.classList.add('active');
 
-    loadProducts(category);
+    load_products(category);
 }
 
 // Add to cart
-function addToCart(productId) {
+function add_to_cart(productId) {
     const product = products.find(p => p.id === productId);
     const cartItem = cart.find(item => item.id === productId);
 
@@ -150,12 +218,12 @@ function addToCart(productId) {
         cart.push({ ...product, quantity: 1 });
     }
 
-    updateCartUI();
-    showNotification('Product added to cart!');
+    update_cart_UI();
+    show_notification('Product added to cart!');
 }
 
 // Update cart UI
-function updateCartUI() {
+function update_cart_UI() {
     const cartCount = document.getElementById('cartCount');
     const cartItems = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
@@ -175,12 +243,12 @@ function updateCartUI() {
                             <div class="cart-item-title">${item.name}</div>
                             <div class="cart-item-price">$${item.price.toFixed(2)}</div>
                             <div class="cart-item-quantity">
-                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <button class="quantity-btn" onclick="update_quantities(${item.id}, -1)">-</button>
                                 <span>${item.quantity}</span>
-                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                                <button class="quantity-btn" onclick="update_quantities(${item.id}, 1)">+</button>
                             </div>
                         </div>
-                        <button onclick="removeFromCart(${item.id})" style="background: none; border: none; font-size: 20px; cursor: pointer;">×</button>
+                        <button onclick="remove_from_cart(${item.id})" style="background: none; border: none; font-size: 20px; cursor: pointer;">×</button>
                     </div>
                 `).join('');
     }
@@ -191,7 +259,7 @@ function updateCartUI() {
 }
 
 // Update quantity
-function updateQuantity(productId, change) {
+function update_quantities(productId, change) {
     const item = cart.find(item => item.id === productId);
     const product = products.find(p => p.id === productId);
 
@@ -202,21 +270,21 @@ function updateQuantity(productId, change) {
         } else if (newQuantity > product.stock) {
             alert('Cannot add more items. Stock limit reached.');
         } else if (newQuantity <= 0) {
-            removeFromCart(productId);
+            remove_from_cart(productId);
             return;
         }
-        updateCartUI();
+        update_cart_UI();
     }
 }
 
 // Remove from cart
-function removeFromCart(productId) {
+function remove_from_cart(productId) {
     cart = cart.filter(item => item.id !== productId);
-    updateCartUI();
+    update_cart_UI();
 }
 
 // Toggle cart
-function toggleCart() {
+function toggle_cart() {
     const cartSidebar = document.getElementById('cartSidebar');
     const overlay = document.getElementById('overlay');
 
@@ -225,7 +293,7 @@ function toggleCart() {
 }
 
 // View product details
-function viewProduct(productId) {
+function view_products(productId) {
     const product = products.find(p => p.id === productId);
     const mainContent = document.getElementById('mainContent');
     const productDetail = document.getElementById('productDetail');
@@ -248,11 +316,11 @@ function viewProduct(productId) {
                     <div class="product-detail-actions">
                         ${product.stock > 0 ? `
                             <div class="quantity-selector">
-                                <button onclick="updateDetailQuantity(-1)">-</button>
+                                <button onclick="update_quantities(-1)">-</button>
                                 <span id="detailQuantity">1</span>
-                                <button onclick="updateDetailQuantity(1)">+</button>
+                                <button onclick="update_quantities(1)">+</button>
                             </div>
-                            <button class="btn-primary" onclick="addToCartFromDetail(${product.id})">Add to Cart</button>
+                            // <button class="btn-primary" onclick="add_to_cartFromDetail(${product.id})">Add to Cart</button>
                         ` : `
                             <button class="btn-primary" disabled style="background: #ccc;">Out of Stock</button>
                         `}
@@ -266,7 +334,7 @@ function viewProduct(productId) {
 }
 
 // Update detail quantity
-function updateDetailQuantity(change) {
+function update_quantities(change) {
     const quantitySpan = document.getElementById('detailQuantity');
     const currentQuantity = parseInt(quantitySpan.textContent);
     const newQuantity = currentQuantity + change;
@@ -276,30 +344,31 @@ function updateDetailQuantity(change) {
     }
 }
 
+// petition for removal because its too similar to update_quantities   ####
 // Add to cart from detail
-function addToCartFromDetail(productId) {
-    const quantity = parseInt(document.getElementById('detailQuantity').textContent);
-    const product = products.find(p => p.id === productId);
-    const cartItem = cart.find(item => item.id === productId);
+// function add_to_cartFromDetail(productId) {
+//     const quantity = parseInt(document.getElementById('detailQuantity').textContent);
+//     const product = products.find(p => p.id === productId);
+//     const cartItem = cart.find(item => item.id === productId);
 
-    if (cartItem) {
-        if (cartItem.quantity + quantity <= product.stock) {
-            cartItem.quantity += quantity;
-        } else {
-            alert(`Cannot add ${quantity} items. Only ${product.stock - cartItem.quantity} available.`);
-            return;
-        }
-    } else {
-        cart.push({ ...product, quantity });
-    }
+//     if (cartItem) {
+//         if (cartItem.quantity + quantity <= product.stock) {
+//             cartItem.quantity += quantity;
+//         } else {
+//             alert(`Cannot add ${quantity} items. Only ${product.stock - cartItem.quantity} available.`);
+//             return;
+//         }
+//     } else {
+//         cart.push({ ...product, quantity });
+//     }
 
-    updateCartUI();
-    showNotification(`${quantity} item(s) added to cart!`);
-    showHome();
-}
+//     update_cart_UI();
+//     show_notification(`${quantity} item(s) added to cart!`);
+//     show_home();
+// }
 
 // Show notification
-function showNotification(message) {
+function show_notification(message) {
     const notification = document.createElement('div');
     notification.style.cssText = `
                 position: fixed;
@@ -323,18 +392,18 @@ function showNotification(message) {
 }
 
 // Show/hide modals
-function showLoginModal() {
+function show_login() {
     document.getElementById('loginModal').classList.add('active');
 }
 
-function closeModal(modalId) {
+function close_modal(modalId) {
     document.getElementById(modalId).classList.remove('active');
 }
 
-function showCheckoutModal() {
+function show_checkout() {
     if (!currentUser) {
         alert('Please login to checkout');
-        showLoginModal();
+        show_login();
         return;
     }
 
@@ -343,12 +412,12 @@ function showCheckoutModal() {
         return;
     }
 
-    toggleCart();
+    toggle_cart();
     document.getElementById('checkoutModal').classList.add('active');
 }
 
 // Toggle between login and register
-function toggleAuthMode() {
+function toggle_auth_mode() {
     isRegisterMode = !isRegisterMode;
     const modalTitle = document.getElementById('modalTitle');
     const authSubmitBtn = document.getElementById('authSubmitBtn');
@@ -375,7 +444,7 @@ function toggleAuthMode() {
 }
 
 // Handle authentication
-function handleAuth(event) {
+function handle_auth(event) {
     event.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -387,7 +456,7 @@ function handleAuth(event) {
         // Simulate registration
         currentUser = { email, name, phone, isAdmin: email === 'admin@awe.com' };
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        showNotification('Registration successful!');
+        show_notification('Registration successful!');
     } else {
         // Simulate login
         if (email === 'admin@awe.com') {
@@ -396,25 +465,25 @@ function handleAuth(event) {
             currentUser = { email, name: 'Customer', isAdmin: false };
         }
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        showNotification('Login successful!');
+        show_notification('Login successful!');
     }
 
-    updateUserUI();
-    closeModal('loginModal');
+    update_ui();
+    close_modal('loginModal');
     document.getElementById('authForm').reset();
 }
 
 // Check login status
-function checkLoginStatus() {
+function check_login_status() {
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
         currentUser = JSON.parse(savedUser);
-        updateUserUI();
+        update_ui();
     }
 }
 
 // Update user UI
-function updateUserUI() {
+function update_ui() {
     const welcomeUser = document.getElementById('welcomeUser');
     const loginBtn = document.getElementById('loginBtn');
 
@@ -425,7 +494,7 @@ function updateUserUI() {
     } else {
         welcomeUser.textContent = 'Welcome to AWE Electronics!';
         loginBtn.textContent = 'Login';
-        loginBtn.onclick = showLoginModal;
+        loginBtn.onclick = show_login;
     }
 }
 
@@ -433,9 +502,9 @@ function updateUserUI() {
 function logout() {
     currentUser = null;
     localStorage.removeItem('currentUser');
-    updateUserUI();
-    showNotification('Logged out successfully');
-    showHome();
+    update_ui();
+    show_notification('Logged out successfully');
+    show_home();
 }
 
 // Process checkout
@@ -464,21 +533,21 @@ function processCheckout(event) {
 
     // Clear cart
     cart = [];
-    updateCartUI();
+    update_cart_UI();
 
     // Close modal and show success
-    closeModal('checkoutModal');
-    showNotification('Order placed successfully! Order ID: ' + order.id);
+    close_modal('checkoutModal');
+    show_notification('Order placed successfully! Order ID: ' + order.id);
 
     // Redirect to orders
-    setTimeout(() => showOrders(), 2000);
+    setTimeout(() => show_orders(), 2000);
 }
 
 // Show orders
-function showOrders() {
+function show_orders() {
     if (!currentUser) {
         alert('Please login to view your orders');
-        showLoginModal();
+        show_login();
         return;
     }
 
@@ -518,7 +587,7 @@ function showOrders() {
 }
 
 // Show home
-function showHome() {
+function show_home() {
     const mainContent = document.getElementById('mainContent');
     const orderHistory = document.getElementById('orderHistory');
     const productDetail = document.getElementById('productDetail');
@@ -532,7 +601,7 @@ function showHome() {
 }
 
 // Show admin
-function showAdmin() {
+function show_admin() {
     if (!currentUser || !currentUser.isAdmin) {
         alert('Admin access required');
         return;
@@ -548,12 +617,12 @@ function showAdmin() {
     productDetail.classList.remove('active');
     adminSection.classList.add('active');
 
-    showAdminTab('overview');
+    show_adminTab('overview');
     window.scrollTo(0, 0);
 }
 
 // Show admin tab
-function showAdminTab(tab) {
+function show_adminTab(tab) {
     // Update active tab
     document.querySelectorAll('.admin-nav-item').forEach(btn => {
         btn.classList.remove('active');
