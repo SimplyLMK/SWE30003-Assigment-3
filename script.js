@@ -323,46 +323,41 @@ function view_products(productId) {
   const productDetail = document.getElementById("productDetail");
   const productDetailContent = document.getElementById("productDetailContent");
 
-  productDetailContent.innerHTML = `
-            <div class="product-detail-image">${product.icon}</div>
-            <div>
-                <h1>${product.name}</h1>
-                <p class="product-detail-category">${product.category}</p>
-                <span class="stock-status ${
-                  product.stock > 0 ? "in-stock" : "out-of-stock"
-                }">
-                    ${
-                      product.stock > 0
-                        ? `✓ In Stock (${product.stock} available)`
-                        : "✗ Out of Stock"
-                    }
-                </span>
-                <p class="product-detail-price">$${product.price.toFixed(2)}</p>
-                <p class="product-detail-description">
-                    Experience premium quality with the ${
-                      product.name
-                    }. This product features advanced technology, 
-                    superior build quality, and exceptional performance. Perfect for both professionals and enthusiasts 
-                    looking for reliable electronics that deliver outstanding results.
-                </p>
-                <div class="product-detail-actions">
-                    ${
-                      product.stock > 0
-                        ? `
-                        <div class="quantity-selector">
-                            <button onclick="update_detail_quantity(-1)">-</button>
-                            <span id="detailQuantity">1</span>
-                            <button onclick="update_detail_quantity(1)">+</button>
-                        </div>
-                        <button class="btn-primary" onclick="add_to_cartFromDetail(${product.id})">Add to Cart</button>
-                    `
-                        : `
-                        <button class="btn-primary" disabled style="background: #ccc;">Out of Stock</button>
-                    `
-                    }
+productDetailContent.innerHTML = `
+    <div class="product-detail-image">
+        <img src="${product.image}" alt="${product.name}" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px;" />
+    </div>
+    <div>
+        <h1>${product.name}</h1>
+        <p class="product-detail-category">${product.category}</p>
+        <span class="stock-status ${product.stock > 0 ? "in-stock" : "out-of-stock"}">
+            ${product.stock > 0 ? `✓ In Stock (${product.stock} available)` : "✗ Out of Stock"}
+        </span>
+        <p class="product-detail-price">$${product.price.toFixed(2)}</p>
+        <p class="product-detail-description">
+            Experience premium quality with the ${product.name}. This product features advanced technology, 
+            superior build quality, and exceptional performance. Perfect for both professionals and enthusiasts 
+            looking for reliable electronics that deliver outstanding results.
+        </p>
+        <div class="product-detail-actions">
+            ${
+              product.stock > 0
+                ? `
+                <div class="quantity-selector">
+                    <button onclick="update_detail_quantity(-1)">-</button>
+                    <span id="detailQuantity">1</span>
+                    <button onclick="update_detail_quantity(1)">+</button>
                 </div>
-            </div>
-        `;
+                <button class="btn-primary" onclick="add_to_cartFromDetail(${product.id})">Add to Cart</button>
+            `
+                : `
+                <button class="btn-primary" disabled style="background: #ccc;">Out of Stock</button>
+            `
+            }
+        </div>
+    </div>
+`;
+
 
   mainContent.style.display = "none";
   productDetail.classList.add("active");
