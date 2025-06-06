@@ -1,41 +1,178 @@
+// const products = [
+//   {
+//     id: 1,
+//     name: "Iphone 16",
+//     price: 1500,
+//     stock: 10,
+//     icon: './iphone16.png'
+//   },
+//   {
+//     id: 2,
+//     name: "Macbook Air",
+//     price: 1400,
+//     stock: 22,
+//   },
+//   {
+//     id: 3,
+//     name: "Airpod 3",
+//     price: 450,
+//     stock: 14,
+//   },
+//   {
+//     id: 4,
+//     name: "Omen Laptop",
+//     price: 600,
+//     stock: 5,
+//   },
+//   {
+//     id: 5,
+//     name: "Portable Charger",
+//     price: 60,
+//     stock: 9,
+//   },
+//   {
+//     id: 6,
+//     name: "Sony Headphone",
+//     price: 100,
+//     stock: 35,
+//   },
+// ];
 const products = [
   {
     id: 1,
-    name: "Iphone 16",
-    price: 1500,
+    name: "Ultrabook Z5",
+    category: "computers",
+    price: 1149.99,
+    icon: "🧮",
     stock: 10,
-    icon: './iphone16.png'
+    image: "images/1.jpeg",
   },
   {
     id: 2,
-    name: "Macbook Air",
-    price: 1400,
+    name: "Surround Sound Bar",
+    category: "audio",
+    price: 229.99,
+    icon: "📢",
     stock: 22,
+    image: "images/2.jpeg",
   },
   {
     id: 3,
-    name: "Airpod 3",
-    price: 450,
+    name: "Pixel Nova 2",
+    category: "phones",
+    price: 849.99,
+    icon: "📲",
     stock: 14,
+    image: "images/3.jpeg",
   },
   {
     id: 4,
-    name: "Omen Laptop",
-    price: 600,
+    name: "NextGen Console X",
+    category: "gaming",
+    price: 599.99,
+    icon: "🕹️",
     stock: 5,
+    image: "images/4.jpeg",
   },
   {
     id: 5,
-    name: "Portable Charger",
-    price: 60,
+    name: "Curved UHD Monitor",
+    category: "computers",
+    price: 479.99,
+    icon: "🖲️",
     stock: 9,
+    image: "images/5.jpeg",
   },
   {
     id: 6,
-    name: "Sony Headphone",
-    price: 100,
+    name: "Portable Bass Cube",
+    category: "audio",
+    price: 69.99,
+    icon: "📻",
     stock: 35,
+    image: "images/6.jpeg",
   },
+  {
+    id: 7,
+    name: "EdgeTab 11",
+    category: "computers",
+    price: 629.99,
+    icon: "📝",
+    stock: 17,
+    image: "images/7.jpeg",
+  },
+  {
+    id: 8,
+    name: "Precision Gaming Mouse",
+    category: "gaming",
+    price: 99.99,
+    icon: "🖲️",
+    stock: 40,
+    image: "images/8.jpeg",
+  },
+  {
+    id: 9,
+    name: "Fitness Tracker FitX",
+    category: "phones",
+    price: 259.99,
+    icon: "⏱️",
+    stock: 13,
+    image: "images/9.jpeg",
+  },
+  {
+    id: 10,
+    name: "RGB Mechanical Keys",
+    category: "gaming",
+    price: 139.99,
+    icon: "🎮",
+    stock: 28,
+    image: "images/10.jpeg",
+  },
+  {
+    id: 11,
+    name: "True Wireless Pods",
+    category: "audio",
+    price: 189.99,
+    icon: "🎧",
+    stock: 33,
+    image: "images/11.jpeg",
+  },
+  {
+    id: 12,
+    name: "NVMe SSD 2TB",
+    category: "computers",
+    price: 219.99,
+    icon: "🗃️",
+    stock: 27,
+    image: "images/12.jpeg",
+  },
+  {
+    id: 13,
+    name: "AI Assistant Speaker",
+    category: "audio",
+    price: 129.99,
+    icon: "🗣️",
+    stock: 20,
+    image: "images/13.jpeg",
+  },
+  {
+    id: 14,
+    name: "Workstation Tower X",
+    category: "computers",
+    price: 1599.99,
+    icon: "🖧",
+    stock: 6,
+    image: "images/14.jpeg",
+  },
+  {
+    id: 15,
+    name: "VR Headset VisionX",
+    category: "gaming",
+    price: 499.99,
+    icon: "🥽",
+    stock: 10,
+    image: "images/15.jpeg",
+  }
 ];
 
 // State management
@@ -72,7 +209,10 @@ function load_products(category) {
     .map(
       (product) => `
             <div class="product-card fade-in">
-              <div class="product-image">${product.icon}</div>
+              <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" class="product-thumbnail" />
+              </div>
+
               <div class="product-info">
                 <h3 class="product-title">${product.name}</h3>
                 <p class="product-category">${product.category}</p>
@@ -147,7 +287,10 @@ function update_cart_UI() {
       .map(
         (item) => `
             <div class="cart-item">
-                <div class="cart-item-image">${item.icon}</div>
+                <div class="cart-item-image">
+                  <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" />
+                </div>
+
                 <div class="cart-item-info">
                     <div class="cart-item-title">${item.name}</div>
                     <div class="cart-item-price">$${item.price.toFixed(2)}</div>
@@ -219,39 +362,41 @@ function view_products(productId) {
   const productDetail = document.getElementById("productDetail");
   const productDetailContent = document.getElementById("productDetailContent");
 
-  productDetailContent.innerHTML = `
-            <div class="product-detail-image">${product.icon}</div>
-            <div>
-                <h1>${product.name}</h1>
-                <p class="product-detail-category">${product.category}</p>
-                <span class="stock-status ${
-                  product.stock > 0 ? "in-stock" : "out-of-stock"
-                }">
-                    ${
-                      product.stock > 0
-                        ? `✓ In Stock (${product.stock} available)`
-                        : "✗ Out of Stock"
-                    }
-                </span>
-                <p class="product-detail-price">$${product.price.toFixed(2)}</p>
-                <div class="product-detail-actions">
-                    ${
-                      product.stock > 0
-                        ? `
-                        <div class="quantity-selector">
-                            <button onclick="update_detail_quantity(-1)">-</button>
-                            <span id="detailQuantity">1</span>
-                            <button onclick="update_detail_quantity(1)">+</button>
-                        </div>
-                        <button class="btn-primary" onclick="add_to_cartFromDetail(${product.id})">Add to Cart</button>
-                    `
-                        : `
-                        <button class="btn-primary" disabled style="background: #ccc;">Out of Stock</button>
-                    `
-                    }
+productDetailContent.innerHTML = `
+    <div class="product-detail-image">
+        <img src="${product.image}" alt="${product.name}" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px;" />
+    </div>
+    <div>
+        <h1>${product.name}</h1>
+        <p class="product-detail-category">${product.category}</p>
+        <span class="stock-status ${product.stock > 0 ? "in-stock" : "out-of-stock"}">
+            ${product.stock > 0 ? `✓ In Stock (${product.stock} available)` : "✗ Out of Stock"}
+        </span>
+        <p class="product-detail-price">$${product.price.toFixed(2)}</p>
+        <p class="product-detail-description">
+            Experience premium quality with the ${product.name}. This product features advanced technology, 
+            superior build quality, and exceptional performance. Perfect for both professionals and enthusiasts 
+            looking for reliable electronics that deliver outstanding results.
+        </p>
+        <div class="product-detail-actions">
+            ${
+              product.stock > 0
+                ? `
+                <div class="quantity-selector">
+                    <button onclick="update_detail_quantity(-1)">-</button>
+                    <span id="detailQuantity">1</span>
+                    <button onclick="update_detail_quantity(1)">+</button>
                 </div>
-            </div>
-        `;
+                <button class="btn-primary" onclick="add_to_cartFromDetail(${product.id})">Add to Cart</button>
+            `
+                : `
+                <button class="btn-primary" disabled style="background: #ccc;">Out of Stock</button>
+            `
+            }
+        </div>
+    </div>
+`;
+
 
   mainContent.style.display = "none";
   productDetail.classList.add("active");
