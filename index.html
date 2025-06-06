@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AWE Electronics Store</title>
+    <title>AWE Electronics</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -76,6 +76,31 @@
       </div>
     </section>
 
+    <!-- Admin Dashboard -->
+    <section class="admin-section" id="adminSection">
+      <div class="container">
+        <h2>Admin Dashboard</h2>
+        <div class="admin-nav">
+          <button
+            class="admin-nav-item active"
+            onclick="showAdminTab('overview')"
+          >
+            Overview
+          </button>
+          <button class="admin-nav-item" onclick="showAdminTab('products')">
+            Manage Products
+          </button>
+          <button class="admin-nav-item" onclick="showAdminTab('inventory')">
+            Inventory
+          </button>
+          <button class="admin-nav-item" onclick="showAdminTab('reports')">
+            Sales Reports
+          </button>
+        </div>
+        <div class="admin-content" id="adminContent"></div>
+      </div>
+    </section>
+
     <!-- Shopping Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
       <div class="cart-header">
@@ -98,7 +123,6 @@
 
     <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="toggle_Cart()"></div>
-
     <!-- Checkout Modal -->
     <div class="modal" id="checkoutModal">
       <div class="modal-content">
@@ -188,6 +212,8 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    
+
+    <script src="main.js"></script>
   </body>
 </html>
