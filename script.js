@@ -6,6 +6,7 @@ const products = [
     price: 1149.99,
     icon: "🧮",
     stock: 10,
+    image: "images/1.jpeg",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const products = [
     price: 229.99,
     icon: "📢",
     stock: 22,
+    image: "images/2.jpeg",
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ const products = [
     price: 849.99,
     icon: "📲",
     stock: 14,
+    image: "images/3.jpeg",
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ const products = [
     price: 599.99,
     icon: "🕹️",
     stock: 5,
+    image: "images/4.jpeg",
   },
   {
     id: 5,
@@ -38,6 +42,7 @@ const products = [
     price: 479.99,
     icon: "🖲️",
     stock: 9,
+    image: "images/5.jpeg",
   },
   {
     id: 6,
@@ -46,6 +51,7 @@ const products = [
     price: 69.99,
     icon: "📻",
     stock: 35,
+    image: "images/6.jpeg",
   },
   {
     id: 7,
@@ -54,6 +60,7 @@ const products = [
     price: 629.99,
     icon: "📝",
     stock: 17,
+    image: "images/7.jpeg",
   },
   {
     id: 8,
@@ -62,6 +69,7 @@ const products = [
     price: 99.99,
     icon: "🖲️",
     stock: 40,
+    image: "images/8.jpeg",
   },
   {
     id: 9,
@@ -70,6 +78,7 @@ const products = [
     price: 259.99,
     icon: "⏱️",
     stock: 13,
+    image: "images/9.jpeg",
   },
   {
     id: 10,
@@ -78,6 +87,7 @@ const products = [
     price: 139.99,
     icon: "🎮",
     stock: 28,
+    image: "images/10.jpeg",
   },
   {
     id: 11,
@@ -86,6 +96,7 @@ const products = [
     price: 189.99,
     icon: "🎧",
     stock: 33,
+    image: "images/11.jpeg",
   },
   {
     id: 12,
@@ -94,8 +105,8 @@ const products = [
     price: 219.99,
     icon: "🗃️",
     stock: 27,
+    image: "images/12.jpeg",
   },
-  // #### add aditional products
   {
     id: 13,
     name: "AI Assistant Speaker",
@@ -103,6 +114,7 @@ const products = [
     price: 129.99,
     icon: "🗣️",
     stock: 20,
+    image: "images/13.jpeg",
   },
   {
     id: 14,
@@ -111,6 +123,7 @@ const products = [
     price: 1599.99,
     icon: "🖧",
     stock: 6,
+    image: "images/14.jpeg",
   },
   {
     id: 15,
@@ -119,48 +132,11 @@ const products = [
     price: 499.99,
     icon: "🥽",
     stock: 10,
-  },
-  {
-    id: 16,
-    name: "Foldable Phone Flexi",
-    category: "phones",
-    price: 1199.99,
-    icon: "📞",
-    stock: 4,
-  },
-  {
-    id: 17,
-    name: "Wireless Charging Dock",
-    category: "phones",
-    price: 49.99,
-    icon: "🔋",
-    stock: 37,
-  },
-  {
-    id: 18,
-    name: "Gaming Chair Elite",
-    category: "gaming",
-    price: 299.99,
-    icon: "🪑",
-    stock: 15,
-  },
-  {
-    id: 19,
-    name: "Compact Office PC",
-    category: "computers",
-    price: 699.99,
-    icon: "🖨️",
-    stock: 8,
-  },
-  {
-    id: 20,
-    name: "Studio Microphone Kit",
-    category: "audio",
-    price: 179.99,
-    icon: "🎙️",
-    stock: 18,
-  },
+    image: "images/15.jpeg",
+  }
 ];
+
+
 
 // State management
 let cart = [];
@@ -196,7 +172,11 @@ function load_products(category) {
     .map(
       (product) => `
             <div class="product-card fade-in">
-              <div class="product-image">${product.icon}</div>
+
+              <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" class="product-thumbnail" />
+              </div>
+
               <div class="product-info">
                 <h3 class="product-title">${product.name}</h3>
                 <p class="product-category">${product.category}</p>
